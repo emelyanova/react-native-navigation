@@ -123,7 +123,7 @@
     NSString *tabbarImage = tabsStyle[@"tabBarBackgroundImage"];
     if (tabbarImage)
     {
-      UIImage *iconImage = [RCTConvert UIImage:icon];
+      UIImage *iconImage = [RCTConvert UIImage:tabbarImage];
       self.tabBar.backgroundImage = iconImage;
     }
 
