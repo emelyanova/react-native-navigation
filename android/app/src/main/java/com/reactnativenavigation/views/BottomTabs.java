@@ -118,8 +118,8 @@ public class BottomTabs extends AHBottomNavigation {
             if (bottomTabsColor.getColor() != getDefaultBackgroundColor()) {
                 setDefaultBackgroundColor(bottomTabsColor.getColor());
             }
-        } else if (Color.WHITE != getDefaultBackgroundColor()){
-            setDefaultBackgroundColor(Color.WHITE);
+        } else if (Color.TRANSPARENT != getDefaultBackgroundColor()){
+            setDefaultBackgroundColor(Color.TRANSPARENT);
         }
     }
 
