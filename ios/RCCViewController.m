@@ -482,6 +482,28 @@ const NSInteger TRANSPARENT_NAVBAR_TAG = 78264803;
     UITabBar *tabBar = viewController.tabBarController.tabBar;
     tabBar.transform = CGAffineTransformMakeTranslation(0, tabBar.frame.size.height);
   }
+    
+    // Custom Implementation begins here
+    NSString *tabBarButtonColor = self.navigatorStyle[@"tabBarButtonColor"];
+    UITabBar *tabBar = viewController.tabBarController.tabBar;
+    if (tabBarButtonColor)
+    {
+        UIColor *color = tabBarButtonColor != (id)[NSNull null] ? [RCTConvert UIColor:tabBarButtonColor] : nil;
+        tabBar.tintColor = color;
+    }
+    NSString *tabBarSelectedButtonColor = self.navigatorStyle[@"tabBarSelectedButtonColor"];
+    if (tabBarSelectedButtonColor)
+    {
+        UIColor *color = tabBarSelectedButtonColor != (id)[NSNull null] ? [RCTConvert UIColor:tabBarSelectedButtonColor] : nil;
+        tabBar.tintColor = color;
+    }
+    NSString *tabBarBackgroundColor = self.navigatorStyle[@"tabBarBackgroundColor"];
+    if (tabBarBackgroundColor)
+    {
+        UIColor *color = tabBarBackgroundColor != (id)[NSNull null] ? [RCTConvert UIColor:tabBarBackgroundColor] : nil;
+        tabBar.barTintColor = color;
+    }
+    // Custom Implementation ends here
 
   NSNumber *navBarHidden = self.navigatorStyle[@"navBarHidden"];
   BOOL navBarHiddenBool = navBarHidden ? [navBarHidden boolValue] : NO;
