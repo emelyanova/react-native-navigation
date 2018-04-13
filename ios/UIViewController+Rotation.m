@@ -50,6 +50,14 @@ static NSString *const ORIENTATION_AUTO =       @"auto";      // defualt
 
 -(UIInterfaceOrientationMask)supportedControllerOrientations {
     if ([self.orientation isEqualToString:ORIENTATION_PORTRAIT]) {
+        UIViewController *rootVC = [[[UIApplication sharedApplication] keyWindow] rootViewController];
+        if (self == rootVC && rootVC.presentedViewController != nil && rootVC.presentedViewController.orientation != nil) {
+            if ([rootVC.presentedViewController.orientation isEqualToString:@"auto"] && !rootVC.presentedViewController.isBeingDismissed)
+                return UIInterfaceOrientationMaskAll;
+            else
+                return UIInterfaceOrientationMaskPortrait;
+        }
+        
         return UIInterfaceOrientationMaskPortrait;
     }
     else if ([self.orientation isEqualToString:ORIENTATION_LANDSCAPE]) {
